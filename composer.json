@@ -1,0 +1,32 @@
+{
+  "name": "mybizna/subscription",
+  "description": "",
+  "type": "asgard-module",
+  "version": "23.08.007",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Mybizna",
+      "homepage": "https://mybizna.com",
+      "email": "info@mybizna.com"
+    },
+    {
+      "name": "Dedan Irungu",
+      "email": "dedanirungu@gmail.com"
+    }
+  ],
+  "require": {
+    "mybizna/partner": ">=24.2.009"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [],
+      "aliases": {}
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Subscription\\": ""
+    }
+  }
+}
