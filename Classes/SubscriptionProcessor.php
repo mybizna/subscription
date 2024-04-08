@@ -63,7 +63,7 @@ class SubscriptionProcessor
 
         if ($app_name == 'subscription' && $model_name == 'Subscription') {
             if (!$affiliate) {
-                $affiliate = Affiliate::where('user_id', $payment->user_id)->first();
+                $affiliate = Affiliate::where('partner_id', $payment->partner_id)->first();
             }
 
             $source = Source::where('app_name', $app_name)->where('model_name', $model_name)->first();
@@ -140,7 +140,7 @@ class SubscriptionProcessor
     public function syncSubscriptionNHosting()
     {
         $hostings = DB::select('SELECT hosting_hosting.* FROM hosting_hosting
-                                    LEFT JOIN subscription_subscription ON hosting_hosting.user_id = subscription_subscription.user_id
+                                    LEFT JOIN subscription_subscription ON hosting_hosting.partner_id = subscription_subscription.partner_id
                                     WHERE hosting_hosting.status <> subscription_subscription.status
                                     AND hosting_hosting.status = 1
                                     AND hosting_hosting.expiry_date > NOW()');
@@ -148,7 +148,7 @@ class SubscriptionProcessor
         $package = $this->getSubscriptionDefaultPackage();
 
         foreach ($hostings as $hosting) {
-            $subscription = Subscription::where('user_id', $hosting->user_id)->first();
+            $subscription = Subscription::where('partner_id', $hosting->partner_id)->first();
 
             if (!$subscription->status && is_null($subscription->expiry_date)) {
                 $subscription->package_id = $package->id;

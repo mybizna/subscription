@@ -23,7 +23,7 @@ class SubscriptionController extends Controller
     {
         $payment_processor = new PaymentProcessor();
 
-        $subscription = Subscription::where('user_id', $pk)->first();
+        $subscription = Subscription::where('partner_id', $pk)->first();
 
         // Rest of your logic for subscription renewal...
 
@@ -35,7 +35,7 @@ class SubscriptionController extends Controller
     {
         $payment_processor = new PaymentProcessor();
 
-        $subscription = Subscription::where('user_id', $pk)->first();
+        $subscription = Subscription::where('partner_id', $pk)->first();
         $package = Package::find(config('subscriptions.pro_package'));
 
         // Rest of your logic for upgrading to GoPro subscription...
