@@ -1,7 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Subscription\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect; // Replace with your PaymentProcessor class
 use Illuminate\Support\Facades\View; // Replace with your Subscription model
 use Modules\Payment\Classes\PaymentProcessor; // Replace with your Package model

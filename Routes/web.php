@@ -1,6 +1,6 @@
 <?php 
 
-use App\Http\Controllers\SubscriptionController;
+use Modules\Subscription\Http\Controllers\SubscriptionController;
 
 Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
 Route::get('/subscriptions/renew/{pk}', [SubscriptionController::class, 'renew'])->name('subscriptions.renew');
