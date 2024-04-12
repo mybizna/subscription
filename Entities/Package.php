@@ -70,4 +70,15 @@ class Package extends BaseModel
         $structure['filter'] = ['title', 'amount', 'no_of_days', 'recurrence', 'published', 'setup_fee'];
         return $structure;
     }
+
+
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+
+    }
 }
