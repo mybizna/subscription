@@ -16,22 +16,6 @@ class Subscription extends BaseModel
     protected $fillable = ['id', 'amount', 'completed', 'status', 'expiry_date', 'last_upgrade_date', 'param', 'payment_id', 'successful', 'upgrade_date', 'partner_id', 'package_id', 'paid'];
 
     /**
-     * The fields that are to be render when performing relationship queries.
-     *
-     * @var array<string>
-     */
-    public $rec_names = [
-        'fields' => ['partner_id__name', 'package_id__title'],
-        'template' => "[partner_id__name] ([package_id__title]) "];
-
-    /**
-     * List of tables names that are need in this model during migration.
-     *
-     * @var array<string>
-     */
-    public array $migrationDependancy = [];
-
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -63,35 +47,8 @@ class Subscription extends BaseModel
         $this->fields->boolean('paid')->nullable()->html('switch')->default(false);
 
     }
-    /**
-     * List of structure for this model.
-     */
-    public function structure($structure): array
-    {
-        $structure['table'] = ['partner_id', 'package_id', 'payment_id', 'amount', 'expiry_date', 'last_upgrade_date', 'upgrade_date', 'completed', 'status', 'successful', 'paid'];
-        $structure['form'] = [
-            ['label' => 'Subscription Detail', 'class' => 'col-span-full md:col-span-6 md:pr-2', 'fields' => ['partner_id', 'package_id', 'amount', 'payment_id', 'upgrade_date', '']],
-            ['label' => 'Subscription Setting', 'class' => 'col-span-full md:col-span-6 md:pr-2', 'fields' => ['completed', 'status', 'successful', 'upgrade_date', 'paid']],
-            ['label' => 'Subscription Params', 'class' => 'col-span-full', 'fields' => ['param']],
-        ];
-        $structure['filter'] = ['partner_id', 'package_id', 'amount', 'completed', 'status', 'expiry_date', 'last_upgrade_date', 'param', 'payment_id', 'successful', 'upgrade_date', 'paid'];
-        return $structure;
-    }
 
 
-    /**
-     * Define rights for this model.
-     *
-     * @return array
-     */
-    public function rights(): array
-    {
-        $rights = parent::rights();
 
-        $rights['staff'] = ['view' => true];
-        $rights['registered'] = [];
-        $rights['guest'] = [];
-
-        return $rights;
-    }
+  
 }
