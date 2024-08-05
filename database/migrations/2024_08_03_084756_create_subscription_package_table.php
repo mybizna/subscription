@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('subscription_package', function (Blueprint $table) {
             $table->id();
-            
+
+            $table->string('title');
+            $table->decimal('amount', 11)->nullable();
+            $table->longText('description');
+            $table->integer('no_of_days')->nullable();
+            $table->boolean('recurrence')->nullable()->default(false);
+            $table->boolean('published')->nullable()->default(false);
+            $table->decimal('setup_fee', 11)->nullable();
+
             $table->timestamps();
         });
     }
