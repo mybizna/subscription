@@ -20,11 +20,11 @@ return new class extends Migration
             $table->dateTime('expiry_date', 6)->nullable();
             $table->dateTime('last_upgrade_date', 6)->nullable();
             $table->longText('param')->nullable();
-            $table->bigInteger('payment_id')->nullable();
+            $table->foreignId('payment_id')->nullable();
             $table->boolean('successful')->nullable()->default(false);
             $table->dateTime('upgrade_date', 6)->nullable();
-            $table->integer('partner_id')->nullable();
-            $table->bigInteger('package_id')->nullable();
+            $table->foreignId('partner_id')->nullable();
+            $table->foreignId('package_id')->nullable();
             $table->boolean('paid')->nullable()->default(false);
 
             $table->timestamps();
