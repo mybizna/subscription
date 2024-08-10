@@ -20,11 +20,11 @@ return new class extends Migration
             $table->dateTime('expiry_date', 6)->nullable();
             $table->dateTime('last_upgrade_date', 6)->nullable();
             $table->longText('param')->nullable();
-            $table->foreignId('payment_id')->constrained('account_payment')->onDelete('cascade')->nullable()->index('payment_id');
+            $table->foreignId('payment_id')->constrained('account_payment')->onDelete('cascade')->nullable()->index('subscription_subscription_payment_id');
             $table->boolean('successful')->nullable()->default(false);
             $table->dateTime('upgrade_date', 6)->nullable();
-            $table->foreignId('partner_id')->constrained('partner_partner')->onDelete('cascade')->nullable()->index('partner_id');
-            $table->foreignId('package_id')->constrained('subscription_substcription')->onDelete('cascade')->nullable()->index('package_id');
+            $table->foreignId('partner_id')->constrained('partner_partner')->onDelete('cascade')->nullable()->index('subscription_subscription_partner_id');
+            $table->foreignId('package_id')->constrained('subscription_substcription')->onDelete('cascade')->nullable()->index('subscription_subscription_package_id');
             $table->boolean('paid')->nullable()->default(false);
 
             $table->timestamps();
