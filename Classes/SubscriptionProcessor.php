@@ -6,11 +6,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Modules\Affiliate\Classes\UpgradeAccount;
-use Modules\Affiliate\Entities\Affiliate;
-use Modules\Affiliate\Entities\Package as SubPackage;
+use Modules\Affiliate\Models\Affiliate;
+use Modules\Affiliate\Models\Package as SubPackage;
 use Modules\Core\Classes\Common;
-use Modules\Core\Entities\Source;
-use Modules\Subscription\Entities\Subscription;
+use Modules\Core\Models\Source;
+use Modules\Subscription\Models\Subscription;
 
 class SubscriptionProcessor
 {

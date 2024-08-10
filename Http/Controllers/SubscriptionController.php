@@ -6,8 +6,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect; // Replace with your PaymentProcessor class
 use Illuminate\Support\Facades\View; // Replace with your Subscription model
 use Modules\Payment\Classes\PaymentProcessor; // Replace with your Package model
-use Modules\Subscription\Entities\Package;
-use Modules\Subscription\Entities\Subscription;
+use Modules\Subscription\Models\Package;
+use Modules\Subscription\Models\Subscription;
 
 class SubscriptionController extends Controller
 {

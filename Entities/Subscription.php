@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Subscription\Entities;
+namespace Modules\Subscription\Models;
 
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class Subscription extends BaseModel
 {
