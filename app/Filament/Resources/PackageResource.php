@@ -2,9 +2,6 @@
 
 namespace Modules\Subscription\Filament\Resources;
 
-use Modules\Subscription\Filament\Resources\PackageResource\Pages;
-use Modules\Subscription\Filament\Resources\PackageResource\RelationManagers;
-use Modules\Subscription\Models\Package;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,10 +9,16 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Subscription\Filament\Resources\PackageResource\Pages;
+use Modules\Subscription\Models\Package;
 
 class PackageResource extends Resource
 {
     protected static ?string $model = Package::class;
+
+    protected static ?string $slug = 'subscription/package';
+
+    protected static ?string $navigationGroup = 'Subscription';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

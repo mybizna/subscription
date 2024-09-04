@@ -9,7 +9,7 @@ class SubscriptionServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'Subscription';
 
-    protected string $moduleNameLower = 'Subscription';
+    protected string $moduleNameLower = 'subscription';
 
     /**
      * Boot the application events.
