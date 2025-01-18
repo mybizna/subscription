@@ -1,17 +1,25 @@
 <?php
-
 namespace Modules\Subscription\Models;
 
+use Base\Casts\Money;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Schema\Blueprint;
 use Modules\Account\Models\Payment;
 use Modules\Base\Models\BaseModel;
 use Modules\Partner\Models\Partner;
 use Modules\Subscription\Models\Package;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Schema\Blueprint;
 
 class Subscription extends BaseModel
 {
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'total' => Money::class, // Use the custom MoneyCast
+    ];
     /**
      * The fields that can be filled
      *
@@ -53,12 +61,11 @@ class Subscription extends BaseModel
         return $this->belongsTo(Package::class);
     }
 
-
     public function migration(Blueprint $table): void
     {
-        $table->id();
 
-        $table->decimal('amount', 11)->nullable();
+        $table->integer('amount')->nullable();
+        $table->string('currency')->default('USD');
         $table->boolean('completed')->nullable()->default(false);
         $table->boolean('status')->nullable()->default(false);
         $table->dateTime('expiry_date', 6)->nullable();
