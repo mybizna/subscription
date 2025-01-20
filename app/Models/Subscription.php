@@ -71,12 +71,19 @@ class Subscription extends BaseModel
         $table->dateTime('expiry_date', 6)->nullable();
         $table->dateTime('last_upgrade_date', 6)->nullable();
         $table->longText('param')->nullable();
-        $table->foreignId('payment_id')->nullable()->constrained(table: 'account_payment')->onDelete('set null');
+        $table->unsignedBigInteger('payment_id')->nullable();
         $table->boolean('successful')->nullable()->default(false);
         $table->dateTime('upgrade_date', 6)->nullable();
-        $table->foreignId('partner_id')->nullable()->constrained(table: 'partner_partner')->onDelete('set null');
-        $table->foreignId('package_id')->nullable()->constrained(table: 'subscription_package')->onDelete('set null');
+        $table->unsignedBigInteger('partner_id')->nullable();
+        $table->unsignedBigInteger('package_id')->nullable();
         $table->boolean('paid')->nullable()->default(false);
 
+    }
+
+    public function post_migration(Blueprint $table): void
+    {
+        $table->foreign('payment_id')->nullable()->constrained(table: 'account_payment')->onDelete('set null');
+        $table->foreign('partner_id')->nullable()->constrained(table: 'partner_partner')->onDelete('set null');
+        $table->foreign('package_id')->nullable()->constrained(table: 'subscription_package')->onDelete('set null');
     }
 }
