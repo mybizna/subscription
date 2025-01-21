@@ -82,8 +82,8 @@ class Subscription extends BaseModel
 
     public function post_migration(Blueprint $table): void
     {
-        $table->foreign('payment_id')->nullable()->constrained(table: 'account_payment')->onDelete('set null');
-        $table->foreign('partner_id')->nullable()->constrained(table: 'partner_partner')->onDelete('set null');
-        $table->foreign('package_id')->nullable()->constrained(table: 'subscription_package')->onDelete('set null');
+        $table->foreign('payment_id')->references('id')->on(table: 'account_payment')->onDelete('set null');
+        $table->foreign('partner_id')->references('id')->on(table: 'partner_partner')->onDelete('set null');
+        $table->foreign('package_id')->references('id')->on(table: 'subscription_package')->onDelete('set null');
     }
 }
