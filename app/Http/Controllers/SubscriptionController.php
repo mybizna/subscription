@@ -9,7 +9,8 @@ use Modules\Payment\Classes\PaymentProcessor; // Replace with your Package model
 use Modules\Subscription\Models\Package;
 use Modules\Subscription\Models\Subscription;
 
-class SubscriptionController extends Controller
+use Modules\Base\Http\Controllers\BaseController;
+class SubscriptionController extends BaseController
 {
     public function index()
     {
